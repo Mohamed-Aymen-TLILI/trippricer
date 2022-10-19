@@ -10,6 +10,11 @@ group = 'com.mtlili'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+bootJar {
+    baseName = 'trippricer'
+    version =  '1.0.0'
+}
+
 repositories {
     mavenCentral()
     flatDir {
@@ -29,16 +34,18 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }
 
+
 jacoco {
-    toolVersion = "0.8.4"
+    toolVersion = "0.8.7"
 }
+
 jacocoTestReport {
     reports {
-        xml.enabled true
+        xml.enabled false
         csv.enabled false
         html.destination file("${buildDir}/jacocoHtml")
     }
